@@ -6,13 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salon extends Model
 {
-    //
     public $table = 'salones';
-    protected $fillable = ['id_edificio', 'nombre'];
+    protected $fillable = ['nombre', 'edificio_id'];
 
-    // ! Hago una relacion inversa con la tabla de edificios
     public function edificio()
     {
-        return $this->belongsTo(Edificio::class, 'id_edificio');
+        return $this->belongsTo(Edificio::class);
     }
 }
