@@ -23,7 +23,7 @@
                 <span class="text-lg font-medium block leading-none">6J</span> {{-- Columna 2 --}}
             </section>
         </article>
-        <a href="../{{$dia}}" class="mt-10 w-30 rounded-3xl mx-auto py-1.5 select-none bg-green-600 flex items-center justify-center">
+        <a href="{{route('home.dia',$dia)}}" class="mt-10 w-30 rounded-3xl mx-auto py-1.5 select-none bg-green-600 flex items-center justify-center">
             <i class="fas fa-arrow-left text-white text-xl"></i>
         </a>
     </main>

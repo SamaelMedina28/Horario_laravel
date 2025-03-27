@@ -7,13 +7,13 @@
     <main class="my-5">
 
         <a class="block mb-5 bg-gray-100 text-center rounded-xl mx-auto shadow-md py-2.5 w-3/4 font-medium hover:bg-gray-200 max-w-100 md:mb-7"
-            href="/{{ $dia }}/Programacion">
+            href="{{route('home.materia',[$dia,'Programacion'])}}">
             <span
                 class="text-center text-[24px] md:text-2xl w-3/5 block mx-auto leading-none my-1 font-medium">Programacion
                 Estructurada</span>
             <span class="pb-1 block text-center text-lg">12:00 - 14:00</span>
         </a>
-        <a href="../"
+        <a href="{{route('home.index')}}"
             class="mt-10 w-30 rounded-3xl mx-auto py-1.5 select-none bg-green-600 flex items-center justify-center">
             <i class="fas fa-arrow-left text-white text-xl"></i>
         </a>

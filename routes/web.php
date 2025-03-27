@@ -1,13 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/{dia}', function ($dia) {
-    return view('dia', compact('dia'));
-});
-Route::get('/{dia}/{materia}', function ($dia, $materia) {
-    return view('materia', compact('dia', 'materia'));
-});
+
+Route::get('/',[HomeController::class, 'index'])->name('home.index');
+
+Route::get('/{dia}',[HomeController::class, 'dia'])->name('home.dia');
+
+Route::get('/{dia}/{materia}',[HomeController::class, 'materia'])->name('home.materia');
