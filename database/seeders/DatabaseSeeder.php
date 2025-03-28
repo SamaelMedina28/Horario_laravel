@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+        $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
         foreach ($dias as $dia) {
             Dia::firstOrCreate(['nombre' => $dia]);
         }
@@ -48,13 +48,13 @@ class DatabaseSeeder extends Seeder
 
         // 4. Materias (corrigiendo ortografía)
         $materias = [
-            'Tecnología y Sociedad',
-            'Estadística Avanzada',
-            'Programación Estructurada',
+            'Tecnologia y Sociedad',
+            'Estadistica Avanzada',
+            'Programacion Estructurada',
             'Lenguaje C',
-            'Matemáticas Discretas',
-            'Metodología de la Investigación',
-            'Organización de Computadoras'
+            'Matematicas Discretas',
+            'Metodología de la Investigacion',
+            'Organizacion de Computadoras'
         ];
         foreach ($materias as $materia) {
             Materia::firstOrCreate(['nombre' => $materia]);
@@ -79,28 +79,109 @@ class DatabaseSeeder extends Seeder
     protected function seedHorarios()
     {
         $horarios = [
+            //* Lunes
             [
                 'dia' => 'Lunes',
-                'materia' => 'Tecnología y Sociedad',
+                'materia' => 'Tecnologia y Sociedad',
                 'salon' => '201',
-                'hora_entrada' => '08:00:00',
-                'hora_salida' => '09:00:00'
+                'entrada' => '08:00:00',
+                'salida' => '09:00:00'
             ],
             [
                 'dia' => 'Lunes',
                 'materia' => 'Estadistica Avanzada',
                 'salon' => '202',
-                'hora_entrada' => '10:00:00',
-                'hora_salida' => '12:00:00'
+                'entrada' => '10:00:00',
+                'salida' => '12:00:00'
+            ],
+            //* Martes
+            [
+                'dia' => 'Martes',
+                'materia' => 'Tecnologia y Sociedad',
+                'salon' => '201',
+                'entrada' => '07:00:00',
+                'salida' => '09:00:00'
             ],
             [
                 'dia' => 'Martes',
-                'materia' => 'Programación Estructurada',
-                'salon' => '201',
-                'hora_entrada' => '13:00:00',
-                'hora_salida' => '15:00:00'
+                'materia' => 'Estadistica Avanzada',
+                'salon' => '203',
+                'entrada' => '10:00:00',
+                'salida' => '12:00:00'
             ],
-            // Agrega más horarios según necesites
+            [
+                'dia' => 'Martes',
+                'materia' => 'Lenguaje C',
+                'salon' => '203',
+                'entrada' => '13:00:00',
+                'salida' => '15:00:00'
+            ],
+            [
+                'dia' => 'Martes',
+                'materia' => 'Matematicas Discretas',
+                'salon' => '202',
+                'entrada' => '15:00:00',
+                'salida' => '17:00:00'
+            ],
+            // & Miercoles
+            [
+                'dia' => 'Miercoles',
+                'materia' => 'Programacion Estructurada',
+                'salon' => '203',
+                'entrada' => '08:00:00',
+                'salida' => '10:00:00'
+            ],
+            [
+                'dia' => 'Miercoles',
+                'materia' => 'Matematicas Discretas',
+                'salon' => '202',
+                'entrada' => '15:00:00',
+                'salida' => '17:00:00'
+            ],
+            // & Jueves
+            [
+                'dia' => 'Jueves',
+                'materia' => 'Programacion Estructurada',
+                'salon' => '203',
+                'entrada' => '08:00:00',
+                'salida' => '10:00:00'
+            ],
+            [
+                'dia' => 'Jueves',
+                'materia' => 'Organizacion de Computadoras',
+                'salon' => '202',
+                'entrada' => '10:00:00',
+                'salida' => '12:00:00'
+            ],
+            [
+                'dia' => 'Jueves',
+                'materia' => 'Lenguaje C',
+                'salon' => '203',
+                'entrada' => '13:00:00',
+                'salida' => '15:00:00'
+            ],
+            // & Viernes
+            [
+                'dia' => 'Viernes',
+                'materia' => 'Metodologia de la Investigacion',
+                'salon' => '103',
+                'entrada' => '10:00:00',
+                'salida' => '12:00:00'
+            ],
+            [
+                'dia' => 'Viernes',
+                'materia' => 'Lenguaje C',
+                'salon' => '202',
+                'entrada' => '12:00:00',
+                'salida' => '13:00:00'
+            ],
+            [
+                'dia' => 'Viernes',
+                'materia' => 'Organizacion de Computadoras',
+                'salon' => '203',
+                'entrada' => '13:00:00',
+                'salida' => '15:00:00'
+            ],
         ];
 
         foreach ($horarios as $horarioData) {
@@ -108,12 +189,11 @@ class DatabaseSeeder extends Seeder
                 'id_dia' => Dia::where('nombre', $horarioData['dia'])->first()->id,
                 'id_materia' => Materia::where('nombre', $horarioData['materia'])->first()->id,
                 'id_salon' => Salon::where('nombre', $horarioData['salon'])->first()->id,
-                'id_entrada' => Entrada::where('hora', $horarioData['hora_entrada'])->first()->id,
-                'id_salida' => Salida::where('hora', $horarioData['hora_salida'])->first()->id
+                'id_entrada' => Entrada::where('hora', $horarioData['entrada'])->first()->id,
+                'id_salida' => Salida::where('hora', $horarioData['salida'])->first()->id
             ];
 
             Horario::firstOrCreate($horario);
         }
     }
-
 }
