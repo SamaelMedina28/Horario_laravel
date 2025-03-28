@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // 1. Días
         $dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
         foreach ($dias as $dia) {
             Dia::firstOrCreate(['nombre' => $dia]);
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
         $edificio6k = Edificio::where('nombre', '6K')->first()->id;
         $edificio6j = Edificio::where('nombre', '6J')->first()->id;
         $salones = [
-            ['nombre' => '203', 'edificio_id' => $edificio6j], // Cambiado a edificio_id
+            ['nombre' => '203', 'edificio_id' => $edificio6j],
             ['nombre' => '202', 'edificio_id' => $edificio6k],
             ['nombre' => '201', 'edificio_id' => $edificio6k],
             ['nombre' => '103', 'edificio_id' => $edificio6k]
