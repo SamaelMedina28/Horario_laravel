@@ -9,6 +9,7 @@ use App\Models\Entrada;
 use App\Models\Salon;
 use App\Models\Edificio;
 use App\Models\Horario;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -36,8 +37,9 @@ class DatabaseSeeder extends Seeder
 
         // 3. Salones (relacionados con edificios) - CORRECCIÓN AQUÍ
         $edificio6k = Edificio::where('nombre', '6K')->first()->id;
+        $edificio6j = Edificio::where('nombre', '6J')->first()->id;
         $salones = [
-            ['nombre' => '203', 'edificio_id' => $edificio6k], // Cambiado a edificio_id
+            ['nombre' => '203', 'edificio_id' => $edificio6j], // Cambiado a edificio_id
             ['nombre' => '202', 'edificio_id' => $edificio6k],
             ['nombre' => '201', 'edificio_id' => $edificio6k],
             ['nombre' => '103', 'edificio_id' => $edificio6k]
@@ -56,8 +58,11 @@ class DatabaseSeeder extends Seeder
             'Metodología de la Investigacion',
             'Organizacion de Computadoras'
         ];
-        foreach ($materias as $materia) {
-            Materia::firstOrCreate(['nombre' => $materia]);
+        foreach ($materias as $materiaNombre) {
+            Materia::firstOrCreate([
+                'nombre' => $materiaNombre,
+                'slug' => Str::slug($materiaNombre) // Genera el slug automáticamente
+            ]);
         }
 
         // 5. Horas de entrada (formato HH:MM:SS)

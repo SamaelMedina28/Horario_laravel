@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dia;
 use App\Models\Horario;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,7 +30,27 @@ class HomeController extends Controller
     }
 
     // ~ Metodo controlador de la vista de detalles de una materia segun el dia
-    public function materia($dia,$materia){
-        return view('materia',compact('dia','materia'));
+    public function materia($dia, $slug)
+    {
+        $horario = Horario::with([
+            'materia',
+            'entrada',
+            'salida',
+            'salon' => function ($query) {
+                $query->with('edificio');
+            }
+        ])
+            ->whereHas('dia', function ($q) use ($dia) {
+                $q->where('nombre', $dia);
+            })
+            ->whereHas('materia', function ($q) use ($slug) {
+                $q->where('slug', $slug);
+            })
+            ->firstOrFail();
+
+        return view('materia', [
+            'dia' => $dia,
+            'horario' => $horario
+        ]);
     }
 }

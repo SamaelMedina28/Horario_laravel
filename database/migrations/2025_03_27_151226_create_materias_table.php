@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
+            $table->string('slug')->unique(); // Campo slug como string único
             $table->timestamps();
         });
     }

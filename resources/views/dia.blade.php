@@ -9,7 +9,7 @@
 
         @foreach ($materias as $horario)
             <a class="block mb-5 bg-gray-100 text-center rounded-xl mx-auto shadow-md py-2.5 w-3/4 font-medium hover:bg-gray-200 max-w-100 md:mb-7"
-                href="{{ route('home.materia', [$dia, $horario->materia->nombre ]) }}">
+                href="{{ route('home.materia', [$dia, $horario->materia->slug ]) }}">
                 <span
                     class="text-center text-[24px] md:text-2xl w-3/5 block mx-auto leading-none my-1 font-medium">{{ $horario->materia->nombre }}</span>
                 <span class="pb-1 block text-center text-lg">{{ substr($horario->entrada->hora, 0, 5) }} -

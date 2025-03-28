@@ -11,6 +11,11 @@ class Salon extends Model
 
     public function edificio()
     {
-        return $this->belongsTo(Edificio::class);
+        return $this->belongsTo(Edificio::class, 'edificio_id');
+    }
+
+    public function horarios()
+    {
+        return $this->hasMany(Horario::class , 'id_salon');
     }
 }
